@@ -1,1 +1,1 @@
-# number-guessing-game
+Creating a simple number guessing game to work on my git skills
