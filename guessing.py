@@ -1,15 +1,43 @@
 import random
 
-#Assign the random number to a variable
-RandomNumber = str(random.randrange(0,11))
+#create a function to check if the input is a valid integer
+def check_if_digit(guess):
+    while True:
+        try:
+            guess = int(guess)
+            if guess >= 0:
+                return guess
+            else:
+                guess = input("Please enter a valid positive integer: ")
+        except ValueError:
+            guess = input("Please enter a valid number: ")
 
-#Ask user to guess the number
-UserGuess = input("Hi There! Please enter a number to guess what the correct one is: ")
 
-#If number is wrong keep within the loop, asking them to guess again
-while(UserGuess != RandomNumber):
-    print("Oops! Wrong Number please guess again ")
-    UserGuess = input("Please try again, what number could it be? ")
+#create a function to check if the user's guess is correct
+def is_correct(num1, num2):
+    while True:
+        if num1 == num2:
+            print("Congrats you guessed the number correctly! It was: " + str(random))
+            break
+        else:
+            num1 = input("Wrong number! Please enter a new guess: ")
+            num1 = check_if_digit(num1)
 
-#If number is correct, congratulate them
-print("Congrats you guessed the number! It was " + (RandomNumber))
+def main():
+    #ask the user for a guess and assign that to a variable
+    user_guess = input("What number am i? : ")
+
+    #check if the user input is an integer
+    user_guess = check_if_digit(user_guess)
+
+    #assign the random number to be within the range of the user's number
+    random_number = random.randint(1,100)
+
+    is_correct(user_guess,random_number)
+ 
+
+main()
+
+
+
+
